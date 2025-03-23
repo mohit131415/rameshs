@@ -1,0 +1,656 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap");
+
+/* Add these imports at the top of the file */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 20 14.3% 4.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 14.3% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14.3% 4.1%;
+    --primary: 43 53% 62%; /* Updated to match gold color in HSL */
+    --primary-foreground: 45 100% 10%;
+    --secondary: 60 4.8% 95.9%;
+    --secondary-foreground: 24 9.8% 10%;
+    --muted: 60 4.8% 95.9%;
+    --muted-foreground: 25 5.3% 44.7%;
+    --accent: 60 4.8% 95.9%;
+    --accent-foreground: 24 9.8% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 20 5.9% 90%;
+    --input: 20 5.9% 90%;
+    --ring: 43 53% 62%; /* Updated to match gold color */
+    --radius: 0.5rem;
+
+    /* Custom colors */
+    --gold: #d3ae6e;
+    --cream: #f8f5f0;
+    --dark-brown: #3a2e21;
+    --warm-amber: #b45309;
+    --warm-amber-light: #fbbf24;
+    --warm-amber-dark: #78350f;
+  }
+
+  .dark {
+    --background: 20 14.3% 4.1%;
+    --foreground: 60 9.1% 97.8%;
+    --card: 20 14.3% 4.1%;
+    --card-foreground: 60 9.1% 97.8%;
+    --popover: 20 14.3% 4.1%;
+    --popover-foreground: 60 9.1% 97.8%;
+    --primary: 43 53% 62%; /* Updated to match gold color in HSL */
+    --primary-foreground: 45 100% 10%;
+    --secondary: 12 6.5% 15.1%;
+    --secondary-foreground: 60 9.1% 97.8%;
+    --muted: 12 6.5% 15.1%;
+    --muted-foreground: 24 5.4% 63.9%;
+    --accent: 12 6.5% 15.1%;
+    --accent-foreground: 60 9.1% 97.8%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 12 6.5% 15.1%;
+    --input: 12 6.5% 15.1%;
+    --ring: 43 53% 62%; /* Updated to match gold color */
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Playfair Display", serif;
+  }
+
+  .font-serif {
+    font-family: "Playfair Display", serif;
+  }
+
+  .font-garamond {
+    font-family: "Cormorant Garamond", serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Premium headings */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif;
+  }
+}
+
+/* Font families */
+.font-sans {
+  font-family: "Poppins", sans-serif;
+}
+
+.font-serif {
+  font-family: "Playfair Display", "Cormorant Garamond", serif;
+}
+
+.font-display {
+  font-family: "Cormorant Garamond", serif;
+}
+
+/* Heritage fonts */
+.font-cinzel {
+  font-family: "Cinzel", serif;
+}
+
+.font-eb-garamond {
+  font-family: "EB Garamond", serif;
+}
+
+/* Add these custom font classes */
+.font-heritage {
+  font-family: "Cormorant Garamond", serif;
+}
+
+/* Custom colors */
+.text-gold {
+  color: #d3ae6e;
+}
+
+.bg-gold {
+  background-color: #d3ae6e;
+}
+
+.border-gold {
+  border-color: #d3ae6e;
+}
+
+.bg-cream {
+  background-color: #f8f5f0;
+}
+
+.text-dark-brown {
+  color: #3a2e21;
+}
+
+.bg-dark-brown {
+  background-color: #3a2e21;
+}
+
+.text-warm-amber {
+  color: #b45309;
+}
+
+.bg-warm-amber {
+  background-color: #b45309;
+}
+
+.border-warm-amber {
+  border-color: #b45309;
+}
+
+/* Add these gold gradient styles to your existing CSS */
+
+.text-gold-dark {
+  color: #c19435;
+}
+
+.bg-gold-dark {
+  background-color: #c19435;
+}
+
+.gold-gradient-border {
+  position: relative;
+}
+
+.gold-gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: 2px;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(212, 175, 55, 0.3),
+    rgba(212, 175, 55, 0.6),
+    rgba(212, 175, 55, 0.3),
+    transparent
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Heritage styling elements */
+.heritage-border {
+  @apply relative;
+}
+
+.heritage-border::before {
+  content: "";
+  @apply absolute inset-0 border-2 border-gold/30 pointer-events-none;
+}
+
+.heritage-border::after {
+  content: "";
+  @apply absolute inset-4 border border-gold/20 pointer-events-none;
+}
+
+/* Heritage marquee styles */
+.heritage-marquee-mask {
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 5%,
+    rgba(0, 0, 0, 1) 95%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 5%,
+    rgba(0, 0, 0, 1) 95%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.heritage-divider {
+  position: relative;
+  height: 1px;
+  width: 100px;
+  background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.6), transparent);
+  margin: 1.5rem auto;
+}
+
+.heritage-divider::before,
+.heritage-divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background-color: rgba(212, 175, 55, 0.6);
+  border-radius: 50%;
+}
+
+.heritage-divider::before {
+  left: 30%;
+}
+
+.heritage-divider::after {
+  right: 30%;
+}
+
+/* Decorative dashed border */
+.dashed-gold-border {
+  background-image: linear-gradient(to right, rgba(212, 175, 55, 0.4) 50%, transparent 50%);
+  background-size: 8px 1px;
+  background-repeat: repeat-x;
+}
+
+.dashed-gold-border-vertical {
+  background-image: linear-gradient(to bottom, rgba(212, 175, 55, 0.4) 50%, transparent 50%);
+  background-size: 1px 8px;
+  background-repeat: repeat-y;
+}
+
+/* Decorative elements */
+.decorative-corner {
+  @apply absolute w-6 h-6;
+}
+
+.decorative-corner-tl {
+  @apply top-0 left-0 border-t-2 border-l-2 border-gold;
+}
+
+.decorative-corner-tr {
+  @apply top-0 right-0 border-t-2 border-r-2 border-gold;
+}
+
+.decorative-corner-bl {
+  @apply bottom-0 left-0 border-b-2 border-l-2 border-gold;
+}
+
+.decorative-corner-br {
+  @apply bottom-0 right-0 border-b-2 border-r-2 border-gold;
+}
+
+/* Navigation hover effects */
+.nav-link-hover {
+  @apply relative;
+}
+
+.nav-link-hover::after {
+  content: "";
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-gold transition-all duration-300;
+}
+
+.nav-link-hover:hover::after {
+  @apply w-full;
+}
+
+/* Gold accent animations */
+.gold-accent-pulse {
+  animation: goldPulse 3s infinite alternate cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes goldPulse {
+  0% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+/* Shine effect for gold elements */
+@keyframes shine {
+  from {
+    background-position: 200% center;
+  }
+  to {
+    background-position: -200% center;
+  }
+}
+
+.gold-shine {
+  background: linear-gradient(
+    to right,
+    rgba(212, 175, 55, 0.1) 0%,
+    rgba(212, 175, 55, 0.3) 20%,
+    rgba(212, 175, 55, 0.5) 50%,
+    rgba(212, 175, 55, 0.3) 80%,
+    rgba(212, 175, 55, 0.1) 100%
+  );
+  background-size: 200% auto;
+  animation: shine 3s linear infinite;
+}
+
+/* Heritage pattern background */
+.heritage-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d3ae6e' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Add a subtle gold gradient for the header */
+.bg-heritage-gold {
+  background: linear-gradient(to right, #f8f5f0, #f5ebd7, #f8f5f0);
+}
+
+/* Add this to your existing CSS file */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Add a subtle gradient mask to indicate more content */
+.scroll-mask-right {
+  mask-image: linear-gradient(to right, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black 90%, transparent 100%);
+}
+
+.scroll-mask-left {
+  mask-image: linear-gradient(to left, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to left, black 90%, transparent 100%);
+}
+
+/* Smooth scrolling for the section */
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+/* Highlight effect for the section when in view */
+.section-highlight {
+  position: relative;
+}
+
+.section-highlight::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, transparent, #d3ae6e, transparent);
+  transform: scaleX(0);
+  transition: transform 0.8s ease-out;
+}
+
+.section-highlight.in-view::before {
+  transform: scaleX(1);
+}
+
+/* Add this to your existing index.css file */
+
+.bg-heritage-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Heritage corners animation */
+@keyframes cornerFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.corner-animate {
+  animation: cornerFadeIn 0.5s ease-out forwards;
+}
+
+/* Add these styles to your existing index.css file */
+
+/* 3D perspective container */
+.perspective-1000 {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+/* Gold shimmer animation */
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(212, 175, 55, 0.1) 0%,
+    rgba(212, 175, 55, 0.2) 25%,
+    rgba(212, 175, 55, 0.3) 50%,
+    rgba(212, 175, 55, 0.2) 75%,
+    rgba(212, 175, 55, 0.1) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite linear;
+}
+
+/* Enhanced gold shimmer animation */
+@keyframes enhancedShimmer {
+  0% {
+    background-position: -200% 0;
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    background-position: 200% 0;
+    opacity: 0.2;
+  }
+}
+
+.gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(212, 175, 55, 0) 0%,
+    rgba(212, 175, 55, 0.1) 20%,
+    rgba(212, 175, 55, 0.2) 40%,
+    rgba(212, 175, 55, 0.3) 50%,
+    rgba(212, 175, 55, 0.2) 60%,
+    rgba(212, 175, 55, 0.1) 80%,
+    rgba(212, 175, 55, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: enhancedShimmer 3s infinite linear;
+}
+
+/* Floating orb animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.floating-orb {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Explosion animation */
+@keyframes explode {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.explode {
+  animation: explode 0.5s forwards;
+}
+
+/* Glow effect for gold elements */
+.gold-glow {
+  filter: drop-shadow(0 0 3px rgba(212, 175, 55, 0.5));
+}
+
+.gold-glow-hover:hover {
+  filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.7));
+  transition: filter 0.3s ease;
+}
+
+/* Floating animation for decorative elements */
+@keyframes floatUpDown {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.float-animation {
+  animation: floatUpDown 3s ease-in-out infinite;
+}
+
+/* Pulse animation for highlights */
+@keyframes pulseFade {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.pulse-fade {
+  animation: pulseFade 2s ease-in-out infinite;
+}
+
+/* Elegant border animation */
+@keyframes borderGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+  }
+}
+
+.border-glow {
+  animation: borderGlow 2.5s ease-in-out infinite;
+}
+
+/* Add these new styles to your existing CSS file */
+
+/* Gold accent variations for legacy messages */
+.gold-accent-1 {
+  background: radial-gradient(
+    circle,
+    rgba(211, 174, 110, 0.2) 0%,
+    rgba(211, 174, 110, 0.1) 70%,
+    rgba(211, 174, 110, 0) 100%
+  );
+}
+
+.gold-accent-2 {
+  background: radial-gradient(
+    circle,
+    rgba(193, 148, 53, 0.2) 0%,
+    rgba(193, 148, 53, 0.1) 70%,
+    rgba(193, 148, 53, 0) 100%
+  );
+}
+
+.gold-accent-3 {
+  background: radial-gradient(
+    circle,
+    rgba(226, 186, 120, 0.2) 0%,
+    rgba(226, 186, 120, 0.1) 70%,
+    rgba(226, 186, 120, 0) 100%
+  );
+}
+
+.gold-accent-4 {
+  background: radial-gradient(
+    circle,
+    rgba(180, 142, 58, 0.2) 0%,
+    rgba(180, 142, 58, 0.1) 70%,
+    rgba(180, 142, 58, 0) 100%
+  );
+}
+
+/* Add these styles to your CSS file */
+.bg-navy-blue {
+  background-color: #0a2342;
+}
+
+.stroke-pink-500 {
+  -webkit-text-stroke: 2px #ff6b81;
+  text-stroke: 2px #ff6b81;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Marquee styles */
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee-content {
+  display: inline-flex;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+/* Custom text shadow for the gold outline */
+.gold-outline-text {
+  color: transparent;
+  -webkit-text-stroke: 2px #d3ae6e;
+  text-shadow: -1px 1px 0 #d3ae6e, 1px 1px 0 #d3ae6e, 1px -1px 0 #d3ae6e, -1px -1px 0 #d3ae6e;
+}
+
