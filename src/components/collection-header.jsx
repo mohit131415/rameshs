@@ -279,8 +279,8 @@ const CollectionHeader = ({ title, subtitle }) => {
               </svg>
             </div>
 
-            {/* Premium title with enhanced typography */}
-            <h1 className="text-center font-serif text-[44px] text-[#8b5d3b] tracking-wider leading-tight relative mb-6">
+            {/* Premium title with enhanced typography - UPDATED FONT */}
+            <h1 className="text-center font-cinzel text-[44px] text-[#8b5d3b] tracking-wider leading-tight relative mb-6">
               <span className="relative inline-block">
                 {/* Ornate underline */}
                 <span className="absolute -bottom-3 left-0 right-0 h-[2px]">
@@ -305,7 +305,7 @@ const CollectionHeader = ({ title, subtitle }) => {
               </span>
             </h1>
 
-            {/* Enhanced subtitle with traditional styling */}
+            {/* Enhanced subtitle with traditional styling - UPDATED FONT */}
             {subtitle && (
               <div className="relative max-w-2xl mx-auto mt-4 mb-6">
                 <div className="absolute top-1/2 left-0 transform -translate-y-1/2">
@@ -326,7 +326,7 @@ const CollectionHeader = ({ title, subtitle }) => {
                     </linearGradient>
                   </svg>
                 </div>
-                <p className="text-center text-[#8b5d3b]/90 font-serif text-lg tracking-wide px-16">{subtitle}</p>
+                <p className="text-center text-[#8b5d3b]/90 font-eb-garamond text-lg tracking-wide px-16">{subtitle}</p>
               </div>
             )}
 
@@ -350,4 +350,3 @@ const CollectionHeader = ({ title, subtitle }) => {
 }
 
 export default CollectionHeader
-

@@ -1,3 +1,5 @@
+"use client"
+
 import { Routes, Route, useLocation } from "react-router-dom"
 import { useEffect } from "react"
 import { RootLayout } from "./components/layout/root-layout"
@@ -10,20 +12,21 @@ import AboutPage from "./pages/about-page"
 import ContactPage from "./pages/contact-page"
 import NotFoundPage from "./pages/not-found-page"
 import { ToastProvider } from "./components/ui/use-toast"
+import WhatsAppButton from "./components/common/whatsapp-button"
 
 // ScrollToTop component to handle scrolling to top on route changes
 function ScrollToTop() {
   const { pathname } = useLocation()
-  
+
   useEffect(() => {
     // Instantly scroll to top without animation
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: "auto" // Use "auto" instead of "smooth" for instant scrolling
+      behavior: "auto", // Use "auto" instead of "smooth" for instant scrolling
     })
   }, [pathname])
-  
+
   return null
 }
 
@@ -43,8 +46,10 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
+      <WhatsAppButton />
     </ToastProvider>
   )
 }
 
 export default App
+

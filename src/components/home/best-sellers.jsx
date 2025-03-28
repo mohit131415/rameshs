@@ -31,7 +31,7 @@ const FeaturedSlider = ({ products, onAddToCart }) => {
     if (!isPaused) {
       autoplayRef.current = setInterval(() => {
         setCurrentIndex((prev) => (prev + 1) % totalProducts)
-      }, 5000) // Change slide every 5 seconds
+      }, 3000) // Change slide every 5 seconds
     }
 
     return () => {
@@ -53,7 +53,7 @@ const FeaturedSlider = ({ products, onAddToCart }) => {
       if (!isPaused) {
         autoplayRef.current = setInterval(() => {
           setCurrentIndex((prev) => (prev + 1) % totalProducts)
-        }, 5000)
+        }, 1000)
       }
     }
   }
@@ -70,7 +70,7 @@ const FeaturedSlider = ({ products, onAddToCart }) => {
       if (!isPaused) {
         autoplayRef.current = setInterval(() => {
           setCurrentIndex((prev) => (prev + 1) % totalProducts)
-        }, 5000)
+        }, 2000)
       }
     }
   }
@@ -87,7 +87,7 @@ const FeaturedSlider = ({ products, onAddToCart }) => {
       if (!isPaused) {
         autoplayRef.current = setInterval(() => {
           setCurrentIndex((prev) => (prev + 1) % totalProducts)
-        }, 5000)
+        }, 2000)
       }
     }
   }

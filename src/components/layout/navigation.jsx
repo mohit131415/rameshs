@@ -77,7 +77,16 @@ export default function Navigation() {
           </Link>
         </li>
         <li>
-          <MegaMenu title="Categories" items={categoryItems} columns={2} />
+        <Link
+            to="/on-day-offer"
+            className={cn(
+              "text-sm font-cinzel font-medium transition-colors hover:text-gold",
+              location.pathname === "/on-day-offer" ? "text-gold font-semibold" : "text-black",
+            )}
+          >
+            On Day Offer
+          </Link>
+          {/* <MegaMenu title="Categories" items={categoryItems} columns={2} /> */}
         </li>
         <li>
           <MegaMenu title="Corporate Gifts" items={corporateGiftItems} />

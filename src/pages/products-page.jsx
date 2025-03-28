@@ -197,16 +197,161 @@ export default function ProductsPage() {
 
   return (
     <div className="relative min-h-screen bg-[#f8f2e0]">
-      {/* Centered logo watermark */}
-      <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-0">
-        <div className="relative w-[650px] h-[650px] opacity-[0.15]">
-          <img
-            src="/images/ramesh-logo.svg"
-            alt="Ramesh Sweets Logo"
-            className="w-full h-full object-contain"
-            style={{ filter: "sepia(50%) contrast(130%)" }}
-          />
+      {/* Heritage pattern background */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        {/* Corner patterns */}
+        <div className="absolute top-0 left-0 w-64 h-64 opacity-25">
+          <svg viewBox="0 0 100 100" className="w-full h-full fill-gold/30 stroke-gold/40">
+            <path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" strokeWidth="0.5" />
+            <path d="M20,0 L20,100" strokeWidth="0.3" strokeDasharray="1 3" />
+            <path d="M40,0 L40,100" strokeWidth="0.3" strokeDasharray="1 3" />
+            <path d="M60,0 L60,100" strokeWidth="0.3" strokeDasharray="1 3" />
+            <path d="M80,0 L80,100" strokeWidth="0.3" strokeDasharray="1 3" />
+            <path d="M0,20 L100,20" strokeWidth="0.3" strokeDasharray="1 3" />
+            <path d="M0,40 L100,40" strokeWidth="0.3" strokeDasharray="1 3" />
+            <path d="M0,60 L100,60" strokeWidth="0.3" strokeDasharray="1 3" />
+            <path d="M0,80 L100,80" strokeWidth="0.3" strokeDasharray="1 3" />
+            <circle cx="20" cy="20" r="3" />
+            <circle cx="40" cy="20" r="3" />
+            <circle cx="60" cy="20" r="3" />
+            <circle cx="80" cy="20" r="3" />
+            <circle cx="20" cy="40" r="3" />
+            <circle cx="40" cy="40" r="3" />
+            <circle cx="60" cy="40" r="3" />
+            <circle cx="80" cy="40" r="3" />
+            <circle cx="20" cy="60" r="3" />
+            <circle cx="40" cy="60" r="3" />
+            <circle cx="60" cy="60" r="3" />
+            <circle cx="80" cy="60" r="3" />
+            <circle cx="20" cy="80" r="3" />
+            <circle cx="40" cy="80" r="3" />
+            <circle cx="60" cy="80" r="3" />
+            <circle cx="80" cy="80" r="3" />
+          </svg>
         </div>
+
+        <div className="absolute top-0 right-0 w-64 h-64 opacity-25">
+          <svg viewBox="0 0 100 100" className="w-full h-full fill-gold/30 stroke-gold/40">
+            <path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" strokeWidth="0.5" />
+            <path d="M20,0 L20,100" strokeWidth="0.3" strokeDasharray="1 3" />
+            <path d="M40,0 L40,100" strokeWidth="0.3" strokeDasharray="1 3" />
+            <path d="M60,0 L60,100" strokeWidth="0.3" strokeDasharray="1 3" />
+            <path d="M80,0 L80,100" strokeWidth="0.3" strokeDasharray="1 3" />
+            <path d="M0,20 L100,20" strokeWidth="0.3" strokeDasharray="1 3" />
+            <path d="M0,40 L100,40" strokeWidth="0.3" strokeDasharray="1 3" />
+            <path d="M0,60 L100,60" strokeWidth="0.3" strokeDasharray="1 3" />
+            <path d="M0,80 L100,80" strokeWidth="0.3" strokeDasharray="1 3" />
+            <circle cx="20" cy="20" r="3" />
+            <circle cx="40" cy="20" r="3" />
+            <circle cx="60" cy="20" r="3" />
+            <circle cx="80" cy="20" r="3" />
+            <circle cx="20" cy="40" r="3" />
+            <circle cx="40" cy="40" r="3" />
+            <circle cx="60" cy="40" r="3" />
+            <circle cx="80" cy="40" r="3" />
+            <circle cx="20" cy="60" r="3" />
+            <circle cx="40" cy="60" r="3" />
+            <circle cx="60" cy="60" r="3" />
+            <circle cx="80" cy="60" r="3" />
+            <circle cx="20" cy="80" r="3" />
+            <circle cx="40" cy="80" r="3" />
+            <circle cx="60" cy="80" r="3" />
+            <circle cx="80" cy="80" r="3" />
+          </svg>
+        </div>
+
+        <div className="absolute bottom-0 left-0 w-64 h-64 opacity-25">
+          <svg viewBox="0 0 100 100" className="w-full h-full fill-gold/30 stroke-gold/40">
+            <path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" strokeWidth="0.5" />
+            <path d="M20,0 L20,100" strokeWidth="0.3" strokeDasharray="1 3" />
+            <path d="M40,0 L40,100" strokeWidth="0.3" strokeDasharray="1 3" />
+            <path d="M60,0 L60,100" strokeWidth="0.3" strokeDasharray="1 3" />
+            <path d="M80,0 L80,100" strokeWidth="0.3" strokeDasharray="1 3" />
+            <path d="M0,20 L100,20" strokeWidth="0.3" strokeDasharray="1 3" />
+            <path d="M0,40 L100,40" strokeWidth="0.3" strokeDasharray="1 3" />
+            <path d="M0,60 L100,60" strokeWidth="0.3" strokeDasharray="1 3" />
+            <path d="M0,80 L100,80" strokeWidth="0.3" strokeDasharray="1 3" />
+            <circle cx="20" cy="20" r="3" />
+            <circle cx="40" cy="20" r="3" />
+            <circle cx="60" cy="20" r="3" />
+            <circle cx="80" cy="20" r="3" />
+            <circle cx="20" cy="40" r="3" />
+            <circle cx="40" cy="40" r="3" />
+            <circle cx="60" cy="40" r="3" />
+            <circle cx="80" cy="40" r="3" />
+            <circle cx="20" cy="60" r="3" />
+            <circle cx="40" cy="60" r="3" />
+            <circle cx="60" cy="60" r="3" />
+            <circle cx="80" cy="60" r="3" />
+            <circle cx="20" cy="80" r="3" />
+            <circle cx="40" cy="80" r="3" />
+            <circle cx="60" cy="80" r="3" />
+            <circle cx="80" cy="80" r="3" />
+          </svg>
+        </div>
+
+        <div className="absolute bottom-0 right-0 w-64 h-64 opacity-25">
+          <svg viewBox="0 0 100 100" className="w-full h-full fill-gold/30 stroke-gold/40">
+            <path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" strokeWidth="0.5" />
+            <path d="M20,0 L20,100" strokeWidth="0.3" strokeDasharray="1 3" />
+            <path d="M40,0 L40,100" strokeWidth="0.3" strokeDasharray="1 3" />
+            <path d="M60,0 L60,100" strokeWidth="0.3" strokeDasharray="1 3" />
+            <path d="M80,0 L80,100" strokeWidth="0.3" strokeDasharray="1 3" />
+            <path d="M0,20 L100,20" strokeWidth="0.3" strokeDasharray="1 3" />
+            <path d="M0,40 L100,40" strokeWidth="0.3" strokeDasharray="1 3" />
+            <path d="M0,60 L100,60" strokeWidth="0.3" strokeDasharray="1 3" />
+            <path d="M0,80 L100,80" strokeWidth="0.3" strokeDasharray="1 3" />
+            <circle cx="20" cy="20" r="3" />
+            <circle cx="40" cy="20" r="3" />
+            <circle cx="60" cy="20" r="3" />
+            <circle cx="80" cy="20" r="3" />
+            <circle cx="20" cy="40" r="3" />
+            <circle cx="40" cy="40" r="3" />
+            <circle cx="60" cy="40" r="3" />
+            <circle cx="80" cy="40" r="3" />
+            <circle cx="20" cy="60" r="3" />
+            <circle cx="40" cy="60" r="3" />
+            <circle cx="60" cy="60" r="3" />
+            <circle cx="80" cy="60" r="3" />
+            <circle cx="20" cy="80" r="3" />
+            <circle cx="40" cy="80" r="3" />
+            <circle cx="60" cy="80" r="3" />
+            <circle cx="80" cy="80" r="3" />
+          </svg>
+        </div>
+
+        {/* Center decorative border */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] opacity-20">
+          <svg viewBox="0 0 100 100" className="w-full h-full fill-none stroke-gold/60">
+            <rect x="5" y="5" width="90" height="90" strokeWidth="0.5" strokeDasharray="3 2" />
+            <rect x="10" y="10" width="80" height="80" strokeWidth="0.3" />
+            <path d="M10,10 L90,90 M90,10 L10,90" strokeWidth="0.2" strokeDasharray="5 3" />
+            <circle cx="50" cy="50" r="30" strokeWidth="0.3" />
+            <circle cx="50" cy="50" r="20" strokeWidth="0.3" strokeDasharray="2 2" />
+            <path d="M50,20 L50,80 M20,50 L80,50" strokeWidth="0.2" />
+
+            {/* Decorative corner elements */}
+            <path d="M5,5 L15,5 L15,15 L5,15 Z" strokeWidth="0.5" />
+            <path d="M85,5 L95,5 L95,15 L85,15 Z" strokeWidth="0.5" />
+            <path d="M5,85 L15,85 L15,95 L5,95 Z" strokeWidth="0.5" />
+            <path d="M85,85 L95,85 L95,95 L85,95 Z" strokeWidth="0.5" />
+
+            {/* Kolam-inspired patterns */}
+            <path d="M50,5 C60,15 60,25 50,35 C40,25 40,15 50,5" strokeWidth="0.3" />
+            <path d="M50,65 C60,75 60,85 50,95 C40,85 40,75 50,65" strokeWidth="0.3" />
+            <path d="M5,50 C15,60 25,60 35,50 C25,40 15,40 5,50" strokeWidth="0.3" />
+            <path d="M65,50 C75,60 85,60 95,50 C85,40 75,40 65,50" strokeWidth="0.3" />
+          </svg>
+        </div>
+
+        {/* Subtle repeating pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.15]"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fillRule='evenodd'%3E%3Cg fill='%23d4af37' fillOpacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+          }}
+        ></div>
       </div>
 
       <div className="relative z-10">
@@ -215,7 +360,7 @@ export default function ProductsPage() {
           subtitle="Discover our handcrafted sweets made with love and tradition"
         />
 
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto px-4">
           <ProductTabs
             tabs={[
               { id: "all", label: "All Products" },
@@ -261,4 +406,3 @@ export default function ProductsPage() {
     </div>
   )
 }
-

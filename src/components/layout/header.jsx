@@ -19,7 +19,7 @@ export default function Header({ className }) {
   const { totalItems } = useCart()
   const { favorites } = useFavorites()
 
-  // Handle scroll effect
+  // Simple scroll detection for shadow effect only
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0)
@@ -29,88 +29,27 @@ export default function Header({ className }) {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  // Track scroll direction and amount
-  const [scrollDirection, setScrollDirection] = useState("up")
-  const [scrollAmount, setScrollAmount] = useState(0)
-  const [prevScrollY, setPrevScrollY] = useState(0)
-
-  useEffect(() => {
-    const handleScrollDirection = () => {
-      const currentScrollY = window.scrollY
-
-      // Update scroll direction
-      if (currentScrollY > prevScrollY) {
-        setScrollDirection("down")
-      } else {
-        setScrollDirection("up")
-      }
-
-      // Update scroll amount (for parallax effects)
-      setScrollAmount(currentScrollY)
-
-      setPrevScrollY(currentScrollY)
-    }
-
-    window.addEventListener("scroll", handleScrollDirection)
-    return () => window.removeEventListener("scroll", handleScrollDirection)
-  }, [prevScrollY])
-
-  // Calculate header styles based on scroll
-  const headerOpacity = Math.min(1, scrollAmount / 200) // Gradually increase opacity as user scrolls
-  const headerBlur = Math.min(16, scrollAmount / 30) // Gradually increase blur
-
-  // Dynamic styles for scroll effects
-  const headerStyle = {
-    boxShadow: isScrolled ? `0 4px 20px rgba(139, 95, 19, ${headerOpacity * 0.1})` : "none",
-    backdropFilter: scrollDirection === "up" && isScrolled ? `blur(${headerBlur}px)` : "none",
-  }
-
   return (
     <>
       {/* Main Header */}
       <header
         className={cn(
-          "sticky top-0 z-50 w-full border-b border-gold/20 transition-all duration-300",
+          "sticky top-0 z-50 w-full border-b border-gold/20 transition-all duration-300 bg-cream/95",
           isScrolled ? "shadow-sm" : "",
-          scrollDirection === "up" && isScrolled ? "bg-cream/80" : "bg-cream/95",
           className,
         )}
-        style={headerStyle}
       >
         {/* Heritage gold line at top */}
         <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-gold/30 via-gold to-gold/30"></div>
 
-        {/* Background with gradient */}
-        <div
-          className="absolute inset-0 bg-gradient-to-b from-cream via-cream/70 to-white"
-          style={{
-            transform: `translateY(${scrollDirection === "down" ? -scrollAmount * 0.05 : 0}px)`,
-            opacity: 1 - headerOpacity * 0.3,
-          }}
-        ></div>
-
         {/* Heritage pattern overlay */}
-        <div
-          className="absolute inset-0 heritage-pattern opacity-5"
-          style={{
-            opacity: 0.05 + headerOpacity * 0.05,
-            transform: `scale(${1 + headerOpacity * 0.05})`,
-          }}
-        ></div>
+        <div className="absolute inset-0 heritage-pattern opacity-5"></div>
 
         <div className="container mx-auto relative z-10">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center">
-              <img
-                src="/images/ramesh-logo.svg"
-                alt="Ramesh Sweets Logo"
-                className="h-12 w-auto -mt-28 -mb-28"
-                style={{
-                  transform: `scale(${1 - headerOpacity * 0.05})`,
-                  transformOrigin: "center left",
-                }}
-              />
+              <img src="/images/ramesh-logo.svg" alt="Ramesh Sweets Logo" className="h-12 w-auto -mt-28 -mb-28" />
             </Link>
 
             {/* Desktop Navigation */}

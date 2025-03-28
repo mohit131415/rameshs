@@ -8,7 +8,7 @@ import { formatPrice } from "../../lib/utils"
 import { useCart } from "../../context/cart-context"
 import { useFavorites } from "../../context/favorites-context"
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, className = "" }) {
   const {
     id,
     name,
@@ -22,6 +22,7 @@ export default function ProductCard({ product }) {
     reviews = 0,
     discount,
     featured,
+    isPremium,
   } = product
 
   const [isHovered, setIsHovered] = useState(false)
@@ -71,11 +72,13 @@ export default function ProductCard({ product }) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true, margin: "-50px" }}
-      className="group"
+      className={`group product-card ${className}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="relative bg-white rounded-lg overflow-hidden border-2 border-gold/20 shadow-md hover:shadow-2xl transition-all duration-500 h-full">
+      <div
+        className={`relative bg-white rounded-lg overflow-hidden border-2 border-gold/20 shadow-md hover:shadow-2xl transition-all duration-500 h-full ${isPremium ? "premium-product" : ""}`}
+      >
         {/* Premium gold border for featured products */}
         {featured && <div className="absolute inset-0 border-2 border-gold rounded-lg z-10 pointer-events-none"></div>}
 
@@ -105,13 +108,18 @@ export default function ProductCard({ product }) {
         )}
 
         <Link to={`/products/${id}`} className="block">
-          <div className="relative overflow-hidden h-64">
+          <div className="relative overflow-hidden h-64 product-image-container">
             {/* Product image with zoom effect */}
             <img
               src={image || "/placeholder.svg"}
               alt={name}
-              className={`w-full h-full object-cover transition-transform duration-700 ${isHovered ? "scale-110" : "scale-100"}`}
+              className={`w-full h-full object-cover transition-transform duration-700 product-image ${isHovered ? "scale-110" : "scale-100"}`}
             />
+            {isPremium && (
+              <div className="premium-badge">
+                <span className="premium-star">★</span> Premium
+              </div>
+            )}
 
             {/* Overlay gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -190,7 +198,7 @@ export default function ProductCard({ product }) {
               <div className="flex space-x-2">
                 <motion.button
                   onClick={handleToggleFavorite}
-                  className={`p-2 rounded-full border-2 ${favorite ? "border-red-200 bg-red-50" : "border-gold/30 bg-white"} hover:shadow-md transition-all`}
+                  className={`p-2 rounded-full border-2 ${favorite ? "border-red-200 bg-red-50" : "border-gold/30 bg-white"} hover:shadow-md transition-all z-20`}
                   aria-label={favorite ? "Remove from favorites" : "Add to favorites"}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
@@ -200,10 +208,11 @@ export default function ProductCard({ product }) {
 
                 <motion.button
                   onClick={handleAddToCart}
-                  className={`p-2 rounded-full ${isAdded ? "bg-green-500 text-white" : "bg-gradient-to-r from-gold to-gold-dark text-white"} hover:shadow-md transition-all`}
+                  className={`p-2 rounded-full ${isAdded ? "bg-green-500 text-white" : "bg-gradient-to-r from-gold to-gold-dark text-white"} hover:shadow-md transition-all z-50 relative`}
                   aria-label="Add to cart"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
+                  style={{ position: "relative" }}
                 >
                   <ShoppingBag className="h-4 w-4" />
                 </motion.button>

@@ -1,4 +1,4 @@
-import { Star, Clock, Users } from "lucide-react"
+import { Star, Clock, Users } from 'lucide-react'
 
 export default function ProductMeta({ product }) {
   // Calculate average rating
@@ -40,4 +40,3 @@ export default function ProductMeta({ product }) {
     </div>
   )
 }
-

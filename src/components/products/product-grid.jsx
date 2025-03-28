@@ -13,6 +13,7 @@ export default function ProductGrid({
   totalPages = 1,
   onPageChange,
   itemsPerPage = 12, // Updated to 12 products per page
+  selectedCategory, // Added selectedCategory prop
 }) {
   const container = {
     hidden: { opacity: 0 },
@@ -64,6 +65,9 @@ export default function ProductGrid({
     )
   }
 
+  // Filtering logic
+  const filteredProducts = products
+
   return (
     <div id="products-section" className="relative">
       {/* Heritage decorative elements */}
@@ -77,8 +81,8 @@ export default function ProductGrid({
         animate="show"
         key={`page-${currentPage}`} // Re-animate when page changes
       >
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+        {filteredProducts.map((product) => (
+          <ProductCard key={product.id} product={product} className={product.isPremium ? "premium-product" : ""} />
         ))}
       </motion.div>
 
@@ -87,3 +91,4 @@ export default function ProductGrid({
     </div>
   )
 }
+

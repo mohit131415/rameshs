@@ -38,11 +38,17 @@ export default function ImageZoom({ src, alt }) {
   return (
     <div
       ref={imageRef}
-      className="w-full h-full cursor-zoom-in relative overflow-hidden"
+      className="w-full h-full cursor-zoom-in relative overflow-hidden rounded-lg border border-gold/20"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onMouseMove={handleMouseMove}
     >
+      {/* Decorative corner elements */}
+      <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-gold/40 z-10 pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-gold/40 z-10 pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-gold/40 z-10 pointer-events-none"></div>
+      <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-gold/40 z-10 pointer-events-none"></div>
+
       <img
         src={src || "/placeholder.svg"}
         alt={alt}

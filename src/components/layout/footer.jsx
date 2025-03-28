@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Facebook, Instagram, Twitter, MapPin, Phone, Mail, Clock } from "lucide-react"
+import { Facebook, Instagram, PhoneIcon as WhatsApp, MapPin, Phone, Mail, Clock } from "lucide-react"
 import RemoteImage from "../ui/remote-image"
 import { HeritageCornerDecoration, HeritageDivider } from "../ui/heritage-decorations"
 
@@ -35,7 +35,7 @@ export default function Footer() {
 
             <p className="text-muted-foreground font-eb-garamond text-base leading-relaxed">
               Crafting authentic Indian sweets with traditional recipes since 1975. Every bite tells a story of heritage
-              and passion.
+              and passion, bringing the rich flavors of India to your celebrations and special moments.
             </p>
 
             <div className="flex space-x-3">
@@ -58,13 +58,13 @@ export default function Footer() {
                 <Instagram className="h-4 w-4" />
               </a>
               <a
-                href="https://twitter.com"
+                href="https://wa.me/919876543210"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full border border-gold/40 flex items-center justify-center text-gold hover:bg-gold/10 transition-colors"
-                aria-label="Twitter"
+                aria-label="WhatsApp"
               >
-                <Twitter className="h-4 w-4" />
+                <WhatsApp className="h-4 w-4" />
               </a>
             </div>
           </div>
@@ -98,15 +98,17 @@ export default function Footer() {
           {/* Categories */}
           <div className="space-y-6">
             <h3 className="font-cinzel text-xl text-gold-dark relative inline-block">
-              Categories
+            Explore
               <span className="absolute -bottom-1 left-0 w-12 h-px bg-gold/40"></span>
             </h3>
             <ul className="space-y-3">
               {[
-                { label: "Milk Sweets", path: "/products?category=milk" },
-                { label: "Dry Fruits", path: "/products?category=dry-fruits" },
-                { label: "Ghee Sweets", path: "/products?category=ghee" },
-                { label: "Gift Packs", path: "/products?category=gift-packs" },
+                { label: "On Day Offer", path: "/on-day-offer" },
+                { label: "Corporate Gifts", path: "/corporate-gifts" },
+                { label: "Wedding Gifts", path: "/wedding-gifts" },
+                { label: "Bulk Order", path: "/bulk-order" },
+                { label: "Festival Specials", path: "/festival-specials" },
+                { label: "Gift Boxes", path: "/gift-boxes" },
               ].map((link, index) => (
                 <li key={index}>
                   <Link
@@ -130,21 +132,39 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 text-gold mr-3 mt-0.5 flex-shrink-0" />
-                <span className="font-eb-garamond text-base text-muted-foreground">
-                  123 Sweet Lane, Jaipur, Rajasthan, India - 302001
-                </span>
+                <a
+                  href="https://maps.google.com/?q=Shop+Number+25,+Main+Bazar+Bharat+Chowk,+Ulhasnagar+1,+Sidhi+Vinayak+Nagar,+Ulhasnagar,+Maharashtra+421001"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-eb-garamond text-base text-muted-foreground hover:text-gold transition-colors"
+                >
+                  Shop Number 25, Main Bazar Bharat Chowk, Ulhasnagar 1, Sidhi Vinayak Nagar, Ulhasnagar, Maharashtra
+                  421001
+                </a>
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 text-gold mr-3 flex-shrink-0" />
-                <span className="font-eb-garamond text-base text-muted-foreground">+91 98765 43210</span>
+                <a
+                  href="tel:+919876543210"
+                  className="font-eb-garamond text-base text-muted-foreground hover:text-gold transition-colors"
+                >
+                  +91 98765 43210
+                </a>
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 text-gold mr-3 flex-shrink-0" />
-                <span className="font-eb-garamond text-base text-muted-foreground">info@rameshsweets.co.in</span>
+                <a
+                  href="mailto:info@rameshsweets.co.in"
+                  className="font-eb-garamond text-base text-muted-foreground hover:text-gold transition-colors"
+                >
+                  info@rameshsweets.co.in
+                </a>
               </li>
               <li className="flex items-center">
                 <Clock className="h-5 w-5 text-gold mr-3 flex-shrink-0" />
-                <span className="font-eb-garamond text-base text-muted-foreground">Open: 9:00 AM - 9:00 PM</span>
+                <span className="font-eb-garamond text-base text-muted-foreground">
+                  Open: 9:00 AM - 11:00 PM (All days including holidays)
+                </span>
               </li>
             </ul>
           </div>
@@ -157,7 +177,8 @@ export default function Footer() {
         <div className="relative">
           <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
             <p className="font-eb-garamond text-sm text-muted-foreground mb-4 md:mb-0">
-              © {currentYear} <span className="text-gold-dark">Ramesh Sweets</span>. All rights reserved.
+              © {currentYear} <span className="text-gold-dark">Ramesh Sweets</span>. All rights reserved. Proudly
+              serving authentic sweets since 1975.
             </p>
             <div className="flex space-x-6">
               <Link

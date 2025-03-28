@@ -2,14 +2,14 @@
 
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { CheckCircle, ArrowLeft } from 'lucide-react'
-import PageHeader from "../components/common/page-header"
+import { CheckCircle, ArrowLeft } from "lucide-react"
 import { Button } from "../components/ui/button"
 import CheckoutForm from "../components/cart/checkout-form"
 import OrderSummary from "../components/checkout/order-summary"
 import PaymentOptions from "../components/checkout/payment-options"
 import { useCart } from "../context/cart-context"
 import { useToast } from "../components/ui/use-toast"
+import CartHeader from "../components/cart/cart-header"
 
 export default function CheckoutPage() {
   const navigate = useNavigate()
@@ -34,18 +34,18 @@ export default function CheckoutPage() {
 
   const handlePaymentSubmit = (method) => {
     setPaymentMethod(method)
-    
+
     // Simulate payment processing
     toast({
       title: "Processing payment...",
       description: "Please wait while we process your payment.",
     })
-    
+
     setTimeout(() => {
       setOrderComplete(true)
       clearCart()
       window.scrollTo(0, 0)
-      
+
       toast({
         title: "Order placed successfully!",
         description: "Thank you for your order. You will receive a confirmation email shortly.",
@@ -70,8 +70,8 @@ export default function CheckoutPage() {
 
             <h1 className="text-3xl font-display font-bold mb-4">Order Placed Successfully!</h1>
             <p className="text-muted-foreground mb-8">
-              Thank you for your order. We've received your order and will begin processing it right away. 
-              You will receive an email confirmation shortly.
+              Thank you for your order. We've received your order and will begin processing it right away. You will
+              receive an email confirmation shortly.
             </p>
 
             <div className="bg-cream/30 rounded-lg p-6 mb-8 text-left">
@@ -112,38 +112,37 @@ export default function CheckoutPage() {
 
   return (
     <div className="pt-24 pb-16">
-      <PageHeader 
-        title="Checkout" 
-        description={currentStep === "shipping" 
-          ? "Complete your shipping information" 
-          : "Select your payment method"
-        } 
-      />
+      {/* Replace the existing header with our new CartHeader */}
+      <CartHeader title="Checkout" itemCount={items.length} />
 
       <div className="container mx-auto px-4">
         {/* Checkout Steps */}
         <div className="max-w-4xl mx-auto mb-8">
           <div className="flex justify-between">
             <div className={`flex-1 text-center ${currentStep === "shipping" ? "font-semibold text-gold-dark" : ""}`}>
-              <div className={`w-8 h-8 mx-auto rounded-full flex items-center justify-center mb-2 ${
-                currentStep === "shipping" ? "bg-gold text-white" : "bg-muted text-muted-foreground"
-              }`}>
+              <div
+                className={`w-8 h-8 mx-auto rounded-full flex items-center justify-center mb-2 ${
+                  currentStep === "shipping" ? "bg-gold text-white" : "bg-muted text-muted-foreground"
+                }`}
+              >
                 1
               </div>
               Shipping
             </div>
             <div className={`flex-1 text-center ${currentStep === "payment" ? "font-semibold text-gold-dark" : ""}`}>
-              <div className={`w-8 h-8 mx-auto rounded-full flex items-center justify-center mb-2 ${
-                currentStep === "payment" ? "bg-gold text-white" : "bg-muted text-muted-foreground"
-              }`}>
+              <div
+                className={`w-8 h-8 mx-auto rounded-full flex items-center justify-center mb-2 ${
+                  currentStep === "payment" ? "bg-gold text-white" : "bg-muted text-muted-foreground"
+                }`}
+              >
                 2
               </div>
               Payment
             </div>
           </div>
           <div className="relative h-1 bg-muted mt-4">
-            <div 
-              className="absolute top-0 left-0 h-full bg-gold transition-all duration-300" 
+            <div
+              className="absolute top-0 left-0 h-full bg-gold transition-all duration-300"
               style={{ width: currentStep === "shipping" ? "50%" : "100%" }}
             ></div>
           </div>
@@ -158,12 +157,7 @@ export default function CheckoutPage() {
               </>
             ) : (
               <>
-                <Button 
-                  variant="ghost" 
-                  size="sm" 
-                  className="mb-4" 
-                  onClick={handleBackToShipping}
-                >
+                <Button variant="ghost" size="sm" className="mb-4" onClick={handleBackToShipping}>
                   <ArrowLeft className="mr-2 h-4 w-4" />
                   Back to Shipping
                 </Button>
@@ -181,3 +175,4 @@ export default function CheckoutPage() {
     </div>
   )
 }
+

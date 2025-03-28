@@ -94,7 +94,7 @@ export default function TestimonialsSection() {
     const interval = setInterval(() => {
       setDirection(1);
       setActiveIndex((prev) => (prev + 1) % testimonials.length);
-    }, 6000);
+    }, 3000);
     
     return () => clearInterval(interval);
   }, [isAutoPlaying, isPaused, activeIndex]);

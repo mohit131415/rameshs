@@ -3,11 +3,12 @@
 import { useState, useEffect } from "react"
 import { useParams, useNavigate, Link } from "react-router-dom"
 import { ArrowLeft } from "lucide-react"
+import { products } from "../data/products"
 import ProductGallery from "../components/product-detail/product-gallery"
 import ProductInfo from "../components/product-detail/product-info"
 import ProductTabs from "../components/product-detail/product-tabs"
-import GiftOptions from "../components/product-detail/gift-options"
 import RelatedProducts from "../components/product-detail/related-products"
+import { HeritageCornerDecoration } from "../components/ui/heritage-decorations"
 
 export default function ProductDetailPage() {
   const { id } = useParams()
@@ -20,74 +21,24 @@ export default function ProductDetailPage() {
   useEffect(() => {
     setIsLoading(true)
 
-    // Simulate API call
+    // Simulate API call with a small delay
     setTimeout(() => {
-      // This would be your actual API call
-      // fetchProduct(id).then(data => setProduct(data))
+      // Find the product with the matching ID
+      const foundProduct = products.find((p) => p.id === Number.parseInt(id) || p.id === id)
 
-      // For now, using sample data
-      const sampleProduct = {
-        id: Number(id),
-        name: "Kaju Katli",
-        description: "Diamond-shaped cashew fudge with a melt-in-your-mouth texture.",
-        longDescription:
-          "Kaju Katli is one of the most popular Indian sweets, known for its smooth texture and rich cashew flavor. Our Kaju Katli is made with the finest quality cashews, ground to perfection and mixed with sugar syrup to create a delicate, melt-in-your-mouth experience. Each piece is carefully diamond-cut and topped with a thin layer of edible silver foil.",
-        image: "/images/sweets/kaju_katli.jpg",
-        gallery: [
-          "/images/sweets/kaju_katli.jpg",
-          "/images/sweets/kaju_katli_2.jpg",
-          "/images/sweets/kaju_katli_3.jpg",
-        ],
-        price: 850,
-        weight: "500g",
-        category: "dry-fruits",
-        tags: ["bestseller", "premium", "gifting"],
-        rating: 4.8,
-        reviews: 124,
-        ingredients: ["Cashews", "Sugar", "Ghee", "Cardamom", "Edible Silver Foil"],
-        allergens: ["Nuts"],
-        nutritionalInfo: {
-          calories: 220,
-          fat: "14g",
-          carbs: "22g",
-          protein: "5g",
-          sugar: "18g",
-        },
-        shelfLife: "15 days when stored in a cool, dry place",
+      if (foundProduct) {
+        setProduct(foundProduct)
+
+        // Get related products (same category, excluding current product)
+        const related = products
+          .filter((p) => p.category === foundProduct.category && p.id !== foundProduct.id)
+          .slice(0, 3)
+
+        setRelatedProducts(related)
       }
 
-      setProduct(sampleProduct)
-
-      // Sample related products
-      setRelatedProducts([
-        {
-          id: 2,
-          name: "Rasmalai",
-          description: "Soft cottage cheese dumplings soaked in saffron-infused milk.",
-          image: "/images/sweets/rasmalai.jpg",
-          price: 750,
-          category: "milk",
-        },
-        {
-          id: 3,
-          name: "Gulab Jamun",
-          description: "Deep-fried milk solids soaked in rose-flavored sugar syrup.",
-          image: "/images/sweets/gulab_jamun.jpg",
-          price: 650,
-          category: "ghee",
-        },
-        {
-          id: 6,
-          name: "Besan Ladoo",
-          description: "Round sweets made from roasted gram flour, ghee, and sugar.",
-          image: "/images/sweets/besan_ladoo.jpg",
-          price: 700,
-          category: "ghee",
-        },
-      ])
-
       setIsLoading(false)
-    }, 1000)
+    }, 500)
   }, [id])
 
   // If product not found, redirect to 404
@@ -121,9 +72,9 @@ export default function ProductDetailPage() {
   }
 
   return (
-    <div className="pt-24 pb-16">
+    <div className="pt-4 pb-16">
       <div className="container mx-auto px-4">
-        <div className="mb-6">
+        <div className="mb-2">
           <Link
             to="/products"
             className="inline-flex items-center text-muted-foreground hover:text-gold-dark transition-colors"
@@ -133,19 +84,28 @@ export default function ProductDetailPage() {
           </Link>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          {/* Product Gallery */}
-          <ProductGallery product={product} />
+        <div
+          className="relative bg-cream/30 rounded-xl p-6 mb-12 border border-gold/10 overflow-hidden"
+          style={{ zIndex: 20 }}
+        >
+          {/* Heritage corner decorations */}
+          <HeritageCornerDecoration className="absolute inset-0 pointer-events-none" variant="full" />
 
-          {/* Product Info */}
-          <ProductInfo product={product} />
+          {/* Decorative background elements */}
+          <div className="absolute top-24 left-12 w-32 h-32 rounded-full bg-gold/5 blur-xl"></div>
+          <div className="absolute bottom-24 right-12 w-40 h-40 rounded-full bg-gold/5 blur-xl"></div>
+
+          <div className="grid md:grid-cols-2 gap-8 relative">
+            {/* Product Gallery */}
+            <ProductGallery product={product} />
+
+            {/* Product Info */}
+            <ProductInfo product={product} />
+          </div>
         </div>
 
         {/* Product Tabs */}
         <ProductTabs product={product} />
-
-        {/* Gift Options */}
-        <GiftOptions />
 
         {/* Related Products */}
         <RelatedProducts products={relatedProducts} />

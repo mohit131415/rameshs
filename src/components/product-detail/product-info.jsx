@@ -7,6 +7,7 @@ import { useCart } from "../../context/cart-context"
 import ProductMeta from "./product-meta"
 import QuantitySelector from "./quantity-selector"
 import { formatPrice } from "../../lib/utils"
+import { HeritageDivider } from "../ui/heritage-decorations"
 
 export default function ProductInfo({ product }) {
   const { addItem } = useCart()
@@ -19,7 +20,8 @@ export default function ProductInfo({ product }) {
       price: product.price,
       image: product.image,
       quantity,
-      weight: product.weight,
+      weight: product.weight || "500g",
+      category: product.category,
     })
   }
 
@@ -30,18 +32,28 @@ export default function ProductInfo({ product }) {
       price: product.price,
       image: product.image,
       quantity,
-      weight: product.weight,
+      weight: product.weight || "500g",
+      category: product.category,
     })
 
     // Navigate to checkout
     window.location.href = "/checkout"
   }
 
+  // Format category name for display
+  const formatCategory = (category) => {
+    if (!category) return ""
+    return category
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ")
+  }
+
   return (
     <div className="space-y-6">
       <div>
         <div className="inline-block px-3 py-1 bg-gold/10 text-gold-dark rounded-full text-sm font-medium mb-2">
-          {product.category}
+          {formatCategory(product.category)}
         </div>
         <h1 className="text-3xl md:text-4xl font-display font-bold mb-2">{product.name}</h1>
 
@@ -57,16 +69,23 @@ export default function ProductInfo({ product }) {
 
       <p className="text-muted-foreground">{product.longDescription || product.description}</p>
 
-      <div className="flex flex-wrap gap-2">
-        {product.tags?.map((tag) => (
-          <span key={tag} className="text-xs bg-muted px-2 py-1 rounded-full capitalize">
-            {tag}
-          </span>
-        ))}
-      </div>
+      {product.tags && product.tags.length > 0 && (
+        <div className="flex flex-wrap gap-2">
+          {product.tags.map((tag) => (
+            <span key={tag} className="text-xs bg-muted px-2 py-1 rounded-full capitalize">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
 
-      <div className="pt-6 border-t border-gold/10">
-        <div className="bg-cream/50 p-4 rounded-lg mb-6">
+      <HeritageDivider className="opacity-40" />
+
+      <div className="pt-2">
+        <div className="bg-cream/50 p-4 rounded-lg mb-6 border border-gold/20 relative overflow-hidden">
+          {/* Decorative heritage pattern */}
+          <div className="absolute inset-0 heritage-pattern opacity-5 pointer-events-none"></div>
+
           <div className="flex justify-between items-center mb-4">
             <QuantitySelector value={quantity} onChange={setQuantity} />
             <span className="text-sm text-muted-foreground">
@@ -92,7 +111,7 @@ export default function ProductInfo({ product }) {
 
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <Gift className="h-4 w-4 text-gold" />
-          <span>Gift wrapping available. See options below.</span>
+          <span>Gift wrapping available. See options in Cart.</span>
         </div>
       </div>
     </div>

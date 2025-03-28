@@ -1,10 +1,37 @@
-export function HeritageCorners({ className = "" }) {
+export function HeritageCornerDecoration({ className = "", variant = "full", ...props }) {
   return (
-    <div className={`absolute inset-0 pointer-events-none ${className}`}>
-      <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-gold"></div>
-      <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-gold"></div>
-      <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-gold"></div>
-      <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-gold"></div>
+    <div className={`relative ${className}`} {...props}>
+      {variant === "full" && (
+        <>
+          <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-gold/60"></div>
+          <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-gold/60"></div>
+          <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-gold/60"></div>
+          <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-gold/60"></div>
+        </>
+      )}
+
+      {variant === "corners" && (
+        <>
+          <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-gold/60"></div>
+          <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-gold/60"></div>
+          <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-gold/60"></div>
+          <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-gold/60"></div>
+        </>
+      )}
+
+      {variant === "top" && (
+        <>
+          <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-gold/60"></div>
+          <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-gold/60"></div>
+        </>
+      )}
+
+      {variant === "bottom" && (
+        <>
+          <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-gold/60"></div>
+          <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-gold/60"></div>
+        </>
+      )}
     </div>
   )
 }
@@ -59,40 +86,28 @@ export function HeritageHeaderDecorationFull({ className = "", ...props }) {
   )
 }
 
-export function HeritageCornerDecoration({ className = "", variant = "full", ...props }) {
+export function HeritageCorners({ className = "" }) {
   return (
-    <div className={`relative ${className}`} {...props}>
-      {variant === "full" && (
-        <>
-          <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-gold/60"></div>
-          <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-gold/60"></div>
-          <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-gold/60"></div>
-          <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-gold/60"></div>
-        </>
-      )}
+    <div className={`absolute inset-0 pointer-events-none ${className}`}>
+      <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-gold"></div>
+      <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-gold"></div>
+      <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-gold"></div>
+      <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-gold"></div>
+    </div>
+  )
+}
 
-      {variant === "corners" && (
-        <>
-          <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-gold/60"></div>
-          <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-gold/60"></div>
-          <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-gold/60"></div>
-          <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-gold/60"></div>
-        </>
-      )}
+// Add a new variant for the cart header
+export function HeritageCartDecoration({ className }) {
+  return (
+    <div className={`absolute inset-0 pointer-events-none ${className}`}>
+      <div className="absolute top-0 left-0 w-16 h-16 border-t border-l border-gold/30 rounded-tl-lg"></div>
+      <div className="absolute top-0 right-0 w-16 h-16 border-t border-r border-gold/30 rounded-tr-lg"></div>
+      <div className="absolute bottom-0 left-0 w-16 h-16 border-b border-l border-gold/30 rounded-bl-lg"></div>
+      <div className="absolute bottom-0 right-0 w-16 h-16 border-b border-r border-gold/30 rounded-br-lg"></div>
 
-      {variant === "top" && (
-        <>
-          <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-gold/60"></div>
-          <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-gold/60"></div>
-        </>
-      )}
-
-      {variant === "bottom" && (
-        <>
-          <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-gold/60"></div>
-          <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-gold/60"></div>
-        </>
-      )}
+      <div className="absolute top-4 left-1/2 -translate-x-1/2 w-2/3 h-0.5 bg-gradient-to-r from-transparent via-gold/20 to-transparent"></div>
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-2/3 h-0.5 bg-gradient-to-r from-transparent via-gold/20 to-transparent"></div>
     </div>
   )
 }

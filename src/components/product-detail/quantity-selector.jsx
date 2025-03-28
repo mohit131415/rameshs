@@ -16,23 +16,23 @@ export default function QuantitySelector({ value = 1, onChange, min = 1, max = 1
   }
 
   return (
-    <div className="flex items-center border border-gold/20 rounded-md">
+    <div className="flex items-center border border-gold/30 rounded-md overflow-hidden">
       <Button
         type="button"
         variant="ghost"
         size="sm"
-        className="px-3 py-1 text-gold-dark hover:bg-gold/10 transition-colors h-9 rounded-none rounded-l-md"
+        className="px-3 py-1 text-gold-dark hover:bg-gold/10 transition-colors h-9 rounded-none"
         onClick={handleDecrement}
         disabled={value <= min}
       >
         -
       </Button>
-      <span className="px-4 py-1 border-x border-gold/20 min-w-[40px] text-center">{value}</span>
+      <span className="px-4 py-1 border-x border-gold/30 min-w-[40px] text-center bg-white/50">{value}</span>
       <Button
         type="button"
         variant="ghost"
         size="sm"
-        className="px-3 py-1 text-gold-dark hover:bg-gold/10 transition-colors h-9 rounded-none rounded-r-md"
+        className="px-3 py-1 text-gold-dark hover:bg-gold/10 transition-colors h-9 rounded-none"
         onClick={handleIncrement}
         disabled={value >= max}
       >
@@ -41,4 +41,3 @@ export default function QuantitySelector({ value = 1, onChange, min = 1, max = 1
     </div>
   )
 }
-

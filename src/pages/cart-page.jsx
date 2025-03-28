@@ -2,14 +2,14 @@
 
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import { ShoppingBag, ArrowRight } from "lucide-react"
+import { ShoppingBag, ArrowRight } from 'lucide-react'
 import { Button } from "../components/ui/button"
-import PageHeader from "../components/common/page-header"
 import SectionHeader from "../components/common/section-header"
 import CartItem from "../components/cart/cart-item"
 import CartSummary from "../components/cart/cart-summary"
 import CheckoutForm from "../components/cart/checkout-form"
 import { useCart } from "../context/cart-context"
+import CartHeader from "../components/cart/cart-header"
 
 export default function CartPage() {
   const { items, totalItems } = useCart()
@@ -33,7 +33,7 @@ export default function CartPage() {
   // Order complete view
   if (isOrderComplete) {
     return (
-      <div className="pt-24 pb-16">
+      <div className="pt-6 pb-16">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center py-12">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-6">
@@ -85,8 +85,13 @@ export default function CartPage() {
   // Empty cart view
   if (items.length === 0) {
     return (
-      <div className="pt-24 pb-16">
-        <PageHeader title="Your Cart" description="Review your items and proceed to checkout" />
+      <div className="pt-6 pb-16">
+        {/* Replace the existing header with our new CartHeader */}
+        <CartHeader 
+          title="Your Shopping Cart" 
+          description="Browse our delicious sweets and add items to your cart"
+          itemCount={0} 
+        />
 
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center py-12">
@@ -113,15 +118,20 @@ export default function CartPage() {
 
   // Cart view with items
   return (
-    <div className="pt-24 pb-16">
-      <PageHeader title="Your Cart" description="Review your items and proceed to checkout" />
+    <div className="pt-6 pb-6">
+      {/* Replace the existing header with our new CartHeader */}
+      <CartHeader 
+        title="Your Shopping Cart" 
+        description="Review your items and proceed to checkout"
+        itemCount={totalItems} 
+      />
 
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8">
           <div className="md:col-span-2">
             <SectionHeader title={`Your Items (${totalItems})`} className="mb-4" />
 
-            <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="bg-white rounded-lg shadow-sm p-6 border border-gold/5">
               {items.map((item) => (
                 <CartItem key={item.id} item={item} />
               ))}
@@ -138,4 +148,3 @@ export default function CartPage() {
     </div>
   )
 }
-
